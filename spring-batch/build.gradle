@@ -1,0 +1,46 @@
+plugins {
+    id 'org.springframework.boot' version '3.2.8'
+    id 'io.spring.dependency-management' version '1.1.3'
+    id 'java'
+}
+
+group = 'me.chulgil.spring'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '21' // Java 21 사용
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    annotationProcessor 'jakarta.persistence:jakarta.persistence-api'
+
+    // Spring Batch
+    implementation 'org.springframework.boot:spring-boot-starter-batch'
+
+    // MySQL Driver
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.33'
+
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+
+    // H2 Database
+    runtimeOnly 'com.h2database:h2'
+
+    // Spring Boot Test
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // Spring Batch Test
+    testImplementation 'org.springframework.batch:spring-batch-test'
+
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.11.3'
+}
+
+test {
+    useJUnitPlatform()
+}
